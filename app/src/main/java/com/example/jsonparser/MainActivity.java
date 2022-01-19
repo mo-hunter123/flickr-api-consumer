@@ -29,6 +29,10 @@ public class MainActivity extends AppCompatActivity {
         Button searchButton = (Button) findViewById(R.id.button);
         EditText tagInput = (EditText) findViewById(R.id.editTextTextTagName);
 
+
+        // asynchronous task to make a get request to our flickr api
+        // when we get our item list we'll make a list of items
+        // using the custom adapter used
         class JSONTask extends AsyncTask<String, Void, List<FlickItem>>{
             @Override
             protected List<FlickItem> doInBackground(String... strings) {
@@ -53,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        // when clicking on the button we'll use the tag name to search images related to the given tag
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

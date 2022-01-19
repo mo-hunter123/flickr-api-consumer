@@ -31,7 +31,11 @@ public class FlickItem {
         this.date_taken = date_taken;
         this.media = media;
     }
+
+    // read items from the api link
     static List<FlickItem> readItems(URL url, Context context) throws JSONException, IOException {
+
+        // read the GET request response body and extract the JSON part
         JSONObject jsonObject = new JSONObject(loadJsonFileFromLink(context, url));
         JSONArray jsonArrayItems = jsonObject.getJSONArray("items");
         List<FlickItem> flickItems = new ArrayList<FlickItem>();
@@ -48,6 +52,8 @@ public class FlickItem {
         }
         return flickItems;
     }
+
+    // load the JSON data as string
     public static String loadJsonFileFromLink(Context context, URL url) throws IOException {
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         String body = null;
